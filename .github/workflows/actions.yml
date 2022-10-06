@@ -1,0 +1,15 @@
+name: First Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step
+        shell: bash
+        run: |
+          echo "running first step"
