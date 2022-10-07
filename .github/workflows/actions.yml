@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - feature/**
-  pull_request:    
+  pull_request:
     branches:
       - main
     types:
       - opened
+      - edited
+      - synchronize
 
 jobs:
   first-job:
