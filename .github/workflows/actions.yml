@@ -3,15 +3,11 @@ name: First Action
 on:
   push:
     branches:
-      - main
-      - feature/**
+      - 'feature/**'
   pull_request:
     branches:
       - main
-    types:
-      - opened
-      - edited
-      - synchronize
+    types: [ opened , synchronize , edited ]
 
 jobs:
   first-job:
