@@ -1,4 +1,4 @@
-name: 🚀 Actualizar cPanel
+name: 🚀 Deploy to cpanel
 on: workflow_dispatch
 
 jobs:
