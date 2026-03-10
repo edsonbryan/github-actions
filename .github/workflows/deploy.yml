@@ -19,4 +19,5 @@ jobs:
           port: 21
           security: loose
           log-level: verbose
+          timeout: 60000
           #dry-run: true
