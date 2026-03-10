@@ -8,19 +8,13 @@ jobs:
       - name: 🚚 Checkout
         uses: actions/checkout@v4
       
-      - name: 🔐 Install SSH Key
-        uses: shimataro/ssh-key-action@v2
+      - name: 📂 Sincronizar (Modo Compatibilidad)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: unnecessary_with_strict_false
-      
-      - name: 🛰️ Test connection and list directories
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo '✅ Conexión exitosa con el usuario: ' && whoami && ls -F public_html"
-
-      #- name: 🚀 Rsync Deploy
-      #  run: |
-      #    rsync -avz -e "ssh -o StrictHostKeyChecking=no" \
-      #    --exclude '.git*' \
-      #    --exclude '.github*' \
-      #    ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/public_html/
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          security: loose
+          log-level: verbose
