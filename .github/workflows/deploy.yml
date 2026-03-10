@@ -8,14 +8,13 @@ jobs:
       - name: 🚚 Checkout
         uses: actions/checkout@v4
       
-      - name: 📂 Sincronizar (Modo Compatibilidad)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: 🚀 Copiar archivos vía SCP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          server-dir: ./
-          port: 21
-          log-level: verbose
-          #dry-run: true
+          host: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 21098
+          source: "."
+          target: "/home/betgallos/testing.betgallos.com/v2"
+          rm: false
