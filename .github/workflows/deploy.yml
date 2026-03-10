@@ -14,7 +14,7 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 21098
+          port: 22
           source: "."
           target: "/home/betgallos/testing.betgallos.com/v2"
           rm: false
