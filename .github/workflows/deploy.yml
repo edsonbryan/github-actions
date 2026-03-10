@@ -17,7 +17,6 @@ jobs:
           protocol: ftp
           server-dir: ./
           port: 21
-          security: loose
+          security: false
           log-level: verbose
-          timeout: 60000
           #dry-run: true
