@@ -19,4 +19,4 @@ jobs:
           port: 21
           security: loose
           log-level: verbose
-          dry-run: true
+          #dry-run: true
