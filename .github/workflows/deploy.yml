@@ -1,20 +1,13 @@
-name: 🔍 Test FTP connection
-on: workflow_dispatch
+name: 🚀 Actualizar cPanel
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  test-connection:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Checkout
-        uses: actions/checkout@v4
-      
-      - name: 🚀 Copiar archivos vía SCP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          source: "."
-          target: "/home/betgallos/testing.betgallos.com/v2"
-          rm: false
+      - name: 🔔 Trigger cPanel Deployment
+        run: |
+          curl -H "Authorization: cpanel ${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_API_TOKEN }}" \
+          "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/update?repository_root=/home/${{ secrets.CPANEL_USER }}/testing.betgallos.com/v3"
