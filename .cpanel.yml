@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/betgallos/testing.betgallos.com/v3
+    - /bin/cp -R * $DEPLOYPATH
